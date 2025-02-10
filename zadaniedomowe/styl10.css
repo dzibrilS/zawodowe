@@ -1,0 +1,51 @@
+body {
+    font-family: Helvetica;
+}
+
+.gorny {
+    display: flex;
+}
+
+.blok {
+    background-color: rgb(146, 184, 112);
+    text-align: center;
+    width: 50%;
+    height: 170px;
+}
+
+.baner, footer {
+    background-color: rgb(100, 61, 49);
+    color: white;
+    text-align: center;
+    height: 80px;
+    padding: 5px;
+}
+
+.glowny {
+    display: flex;
+}
+
+.lewy, .prawy {
+    background-color: rgb(146, 184, 112);
+    width: 50%;
+    height: 450px;
+}
+
+table {
+    border: 2px dashed green;
+    margin: 30px;
+    padding: 20px;
+}
+
+h1 {
+    letter-spacing: 20px;
+    font-size: 250%;
+}
+
+a {
+    background-image: url('cukierki1.jpg');
+    padding-right: 30px;
+    padding-bottom: 120px;
+    font-size: 150%;
+    text-decoration: none;
+}
