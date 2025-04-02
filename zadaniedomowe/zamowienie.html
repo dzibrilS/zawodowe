@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Fabryka cukierków</title>
+    <link rel="stylesheet" href="styl10.css">
+    <script>
+        function zamowienie() {
+            const numer = document.getElementById('ksztalt').value;
+            let kształt;
+            switch (numer) {
+                case '1':
+                    kształt = 'cytryna';
+                    break;
+                case '2':
+                    kształt = 'liść';
+                    break;
+                case '3':
+                    kształt = 'banan';
+                    break;
+                default:
+                    kształt = 'inny';
+            }
+            document.getElementById('info').innerText = `Twoje zamówienie to cukierek ${kształt}`;
+
+            const r = document.getElementById('r').value;
+            const g = document.getElementById('g').value;
+            const b = document.getElementById('b').value;
+            document.getElementById('kolorButton').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+    </script>
+</head>
+<body>
+    <section class="gorny">
+        <div class="blok">
+            <a href="zamowienie.html">Zamów cukierki</a>
+        </div>
+        <div class="blok">
+            <a href="index.html"><img src="logotyp.jpg" alt="Nasze logo"></a>
+        </div>
+    </section>
+    <section class="baner">
+        <h1>Strefa zamówień</h1>
+    </section>
+    <section class="glowny">
+        <div class="lewy">
+            <label for="ksztalt">Numer kształtu: </label>
+            <input type="number" id="ksztalt">
+            <br>
+            <label for="rgb">Skomponuj swój kolor, podaj RGB: </label>
+            <br>
+            <label for="r">R:</label>
+            <input type="number" id="r">
+            <label for="g">G:</label>
+            <input type="number" id="g">
+            <label for="b">B:</label>
+            <input type="number" id="b">
+            <br>
+            <button onclick="zamowienie()">Zamówienie</button>
+            <p id="info">Twoje zamówienie</p>
+            <button id="kolorButton">Kolor</button>
+        </div>
+    </section>
+    <footer>
+        <p>Autor strony: <strong>PESEL</strong></p>
+    </footer>
+</body>
+</html>
+
+
