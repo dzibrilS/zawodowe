@@ -1,65 +1,71 @@
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 #include <time.h>
 using namespace std;
-class Gra
-{
 
+class Gra {
 public:
-    int rzut, wynik, temp, rozmiar, suma;
-    int liczba[10];
-    Gra()
-    {
-        rzut = 0;
-        wynik = 0;
-        temp = 0;
-        suma = 0;
-        rozmiar = 10;
-    }
-    void insert()
-    {
-        do
-        {
-            cout << "Podaj liczbę z zakresu 3-10: ";
-            cin >> rzut;
+  int rzut, suma;
+  int liczba[10];
+  char wynik1[10];
 
-        } while (rzut < 3 || rzut > 10);
-    }
-    void display()
-    {
+  Gra() {
+    rzut = 0;
+    suma = 0;
+  }
 
-        for (int i = 0; i < rzut; i++)
-        {
-            srand(time(NULL) * (i + 1));
-            liczba[i] = (rand() % 6) + 1;
-            cout << "kostka " << i + 1 << ": " << liczba[i] << endl;
-        }
+  void insert() {
+    do {
+      cout << "Podaj liczbę z zakresu 3-10: ";
+      cin >> rzut;
+    } while (rzut < 3 || rzut > 10);
+  }
+
+  void wpisz() {
+    srand(time(NULL));
+    for (int i = 0; i < rzut; i++) {
+      liczba[i] = (rand() % 6) + 1;
+      cout << "kostka " << i + 1 << ": " << liczba[i] << endl;
     }
-    void sum()
-    {
-        for (int i = 0; i < rozmiar - 1; i++)
-        {
-            temp = liczba[i];
-            for (int j = j + 1; j < rozmiar; i++)
-            {
-                if (temp == liczba[j])
-                {
-                    suma += temp + liczba[j];
-                }
-            }
-        }
+  }
+
+  void sum() {
+    int licznik[7] = {0}; // indeksy 1-6 dla wyników kostki
+    suma = 0;
+
+    for (int i = 0; i < rzut; i++) {
+      licznik[liczba[i]]++;
     }
-    void display1()
-    {
-        cout << "suma " << suma << endl;
+
+    for (int i = 1; i <= 6; i++) {
+      if (licznik[i] >= 2) {
+        suma += i * licznik[i];
+      }
     }
+  }
+
+  void display() {
+    cout << "suma " << suma << endl;
+    cout << "czy chcesz zagrac jeszcze raz? t/n" << endl;
+    cin >> wynik1;
+    while(*wynik1 != 't' && *wynik1 != 'n'){
+      
+    if (*wynik1 == 't') {
+      wpisz();
+      sum();
+      cout << "suma " << suma << endl;
+    } else {
+      cout << "dziekuje za gre" << endl;
+    }
+  }
+  }
 };
-int main()
-{
-    Gra gra;
-    gra.insert();
-    gra.display();
-    gra.sum();
-    gra.display1();
-    return 0;
+
+int main() {
+  Gra gra;
+  gra.insert();
+  gra.wpisz();
+  gra.sum();
+  gra.display();
+  return 0;
 }
